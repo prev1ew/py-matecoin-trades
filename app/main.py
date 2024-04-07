@@ -10,7 +10,8 @@ def calculate_profit(filename: str) -> None:
         file_data = json.load(file_opened)
     for el in file_data:
         is_it_a_purchase = el["bought"] is not None
-        purchased_amount = Decimal(el["bought"]) if is_it_a_purchase else Decimal(el["sold"]) * -1
+        purchased_amount = Decimal(el["bought"]) if is_it_a_purchase \
+            else Decimal(el["sold"]) * -1
         money_res += purchased_amount * Decimal(el["matecoin_price"])
         coins_res += purchased_amount
     with open("profit.json", "w+") as curr_file:
