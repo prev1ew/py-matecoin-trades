@@ -3,7 +3,6 @@ from decimal import Decimal
 
 
 def calculate_profit(filename: str) -> None:
-    file_data = None
     money_res = 0
     coins_res = 0
     with open(filename) as file_opened:
@@ -18,7 +17,7 @@ def calculate_profit(filename: str) -> None:
         coins_res += purchased_amount
     with open("profit.json", "w+") as curr_file:
         obj_to_dump = {
-            "earned_money": f"{money_res:.7f}",
-            "matecoin_account": f"{coins_res:.5f}"
+            "earned_money": f"{money_res: .7f}",
+            "matecoin_account": f"{coins_res: .5f}"
         }
         json.dump(obj_to_dump, curr_file)
